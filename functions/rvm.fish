@@ -21,7 +21,8 @@ function rvm --argument-names "ruby" --description "Ruby Version Manager"
   set -g -x RUBY_VERSION $ruby_version
   set -g -x RUBY_GEMSET $ruby_gemset
   
-  functions -c fish_prompt _old_rvm_prompt
+  functions --erase _old_rvm_prompt
+  functions --copy fish_prompt _old_rvm_prompt
   function fish_prompt
     set -l bg 333
     set -l standout green
