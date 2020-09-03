@@ -15,12 +15,12 @@ function rvm --argument-names "ruby" --description "Ruby Version Manager"
 
   set total $ruby_version@$ruby_gemset
 
-  set -g -x GEM_HOME /Users/gizmo/.rvm/gems/$total
-  set -g -x PATH ~/.rvm/gems/$total/bin ~/.rvm/gems/$ruby_version@global/bin ~/.rvm/rubies/$ruby_version/bin ~/.rvm/bin $PATH
-  set -g -x GEM_PATH ~/.rvm/gems/$total ~/.rvm/gems/$ruby_version@global
-  set -g -x RUBY_VERSION $ruby_version
-  set -g -x RUBY_GEMSET $ruby_gemset
-  
+  set --global --export GEM_HOME ~/.rvm/gems/$total
+  set --global --export PATH ~/.rvm/gems/$total/bin ~/.rvm/gems/$ruby_version@global/bin ~/.rvm/rubies/$ruby_version/bin ~/.rvm/bin $PATH
+  set --global --export GEM_PATH ~/.rvm/gems/$total ~/.rvm/gems/$ruby_version@global
+  set --global --export RUBY_VERSION $ruby_version
+  set --global --export RUBY_GEMSET $ruby_gemset
+
   functions --erase _old_rvm_prompt
   functions --copy fish_prompt _old_rvm_prompt
   function fish_prompt
