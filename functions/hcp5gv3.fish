@@ -3,8 +3,8 @@ function hcp5gv3_deactivate --description "deativate hcp5gv3"
   set -e Debug
   set -e WS
   functions -e fish_prompt
-  functions -c _old_hcp5_fish_prompt fish_prompt
-  functions -e _old_hcp5_fish_prompt
+  functions -c _old_hcp5gv3_fish_prompt fish_prompt
+  functions -e _old_hcp5gv3_fish_prompt
 end
 
 function hcp5gv3 --description "HCP5-GV3 Project setup"
