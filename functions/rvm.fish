@@ -1,4 +1,8 @@
 function rvm --argument-names "ruby" --description "Ruby Version Manager"
+  if functions --all --names | grep _old_rvm_prompt > /dev/null
+    return 0
+  end
+
   if test -n "$ruby"
     set parts (string split "@" $ruby)
     set ruby_version $parts[1]
