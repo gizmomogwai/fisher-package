@@ -3,6 +3,7 @@ function hcp5_deactivate --description "deativate hcp5"
   set -e Debug
   set -e ParallelBuild
   set -e WS
+  set -e BuildVariant
 
   functions -e fish_prompt
   functions -c _old_hcp5_fish_prompt fish_prompt
@@ -18,6 +19,7 @@ function hcp5 --description "HCP5 Project setup"
   set -gx Target audi_hcp5_bosch
   set -gx Debug true
   set -gx ParallelBuild true
+  set -gx BuildVariant user
 
   functions -c fish_prompt _old_hcp5_fish_prompt
   function fish_prompt
@@ -37,8 +39,12 @@ function hcp5 --description "HCP5 Project setup"
     set_color $fish_color_normal --background $bg
     echo -n ParallelBuild=
     set_color $standout --background $bg
-    echo $ParallelBuild
-    
+    echo -n "$ParallelBuild "
+    set_color $fish_color_normal --background $bg
+    echo -n BuildVariant=
+    set_color $standout --background $bg
+    echo $BuildVariant
+
     _old_hcp5_fish_prompt
   end
 end
