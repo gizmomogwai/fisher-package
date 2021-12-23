@@ -12,7 +12,7 @@ end
 
 function hcp5 --description "HCP5 Project setup"
 
-  set -gx WS /media/more/hcp5/ws/work
+  set -gx WS /media/more/hcp5/ws/hcp5-master
   cd $WS
   rvm ruby-2.7.1@hcp5
   
