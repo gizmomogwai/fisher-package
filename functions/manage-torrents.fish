@@ -1,4 +1,4 @@
-function get-torrent -d "get a torrent file via deluge"
+function manage-torrents -d "manage torrents on fileserver via deluge console"
   set location (/Sy*/L*/Priv*/Apple8*/V*/C*/R*/airport -I | awk '/ SSID:/ {print $2}')
   switch $location
     case "Lakeside"
@@ -9,5 +9,5 @@ function get-torrent -d "get a torrent file via deluge"
       echo "Unknown location: $location"
       exit 1
   end
-  ssh $h "sudo ip netns exec protected su -l pi -c '/usr/bin/deluge-console add $argv[1]'"
+  ssh -t $h "sudo ip netns exec protected su -l pi -c '/usr/bin/deluge-console'"
 end
