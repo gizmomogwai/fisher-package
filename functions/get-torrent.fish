@@ -11,5 +11,5 @@ function get-torrent -d "get a torrent file via deluge"
       echo "Unknown location: $location"
       exit 1
   end
-  ssh $h ./get-torrent.sh $name "$torrent"
+  ssh $h "./get-torrent.sh $name '$torrent'"
 end
