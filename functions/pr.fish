@@ -1,5 +1,6 @@
 function pr -d "list all projects with projects.rb"
-  if ~/Dropbox/Documents/_projects/projects.rb | fzf > /tmp/project.result
-    pushd (cat /tmp/project.result)
+  set selectedDir (~/Sync/projects/projects.rb | fzf)
+  if test $status -eq 0
+    pushd $selectedDIr
   end
 end
