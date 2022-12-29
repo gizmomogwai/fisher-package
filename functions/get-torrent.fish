@@ -7,6 +7,8 @@ function get-torrent -d "get a torrent file via deluge"
       set h pi@seehaus-piano.fritz.box
     case "Pepe"
       set h pi@fs.local
+    case "Eisbach"
+      set h pi@fs.local
     case "*"
       echo "Unknown location: $location"
       exit 1
