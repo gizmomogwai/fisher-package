@@ -5,6 +5,8 @@ function manage-torrents -d "manage torrents on fileserver via deluge console"
       set h pi@seehaus-piano.local
     case "Pepe"
       set h pi@fs.local
+    case "Eisbach"
+      set h pi@fs.local
     case "*"
       echo "Unknown location: $location"
       exit 1
