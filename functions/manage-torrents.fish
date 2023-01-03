@@ -11,5 +11,5 @@ function manage-torrents -d "manage torrents on fileserver via deluge console"
       echo "Unknown location: $location"
       exit 1
   end
-  ssh -t $h "sudo ip netns exec protected su -l pi -c '/usr/bin/deluge-console'"
+  ssh -t $h byobu
 end
