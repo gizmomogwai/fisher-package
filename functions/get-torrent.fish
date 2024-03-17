@@ -1,7 +1,7 @@
 function get-torrent -d "get a torrent file via deluge"
   set name $argv[1]
   set torrent $argv[2]
-  set location (/Sy*/L*/Priv*/Apple8*/V*/C*/R*/airport -I | awk '/ SSID:/ {print $2}')
+  set location (networksetup -getairportnetwork en0 | cut -f 2 -d ':' | xargs)
   switch $location
     case "Lakeside"
       set h pi@seehaus-piano.fritz.box
