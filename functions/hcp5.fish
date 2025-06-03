@@ -4,46 +4,48 @@ function hcp5_deactivate --description "deativate hcp5"
   set -e ParallelBuild
   set -e WS
   set -e BuildVariant
+  set -e Hcp5Version
 
   functions -e fish_prompt
   functions -c _old_hcp5_fish_prompt fish_prompt
   functions -e _old_hcp5_fish_prompt
+  functions -e hcp5_deactivate
 end
 
-function hcp5 --description "HCP5 Project setup"
+function hcp5 --description "HCP5 Project setup" --argument-names hcp5_version
 
-  set -gx WS $HOME/ESRLabs/HCP5/hcp5-master
+  set -gx WS $HOME/ESRLabs/HCP5/$hcp5_version
   cd $WS
   rvm ruby-3.3.0@hcp5
-  
+  set -gx Hcp5Version $hcp5_version
   set -gx Target audi_hcp5_bosch
-  set -gx Debug true
+  set -gx Debug false
   set -gx ParallelBuild true
-  set -gx BuildVariant user
+  set -gx BuildVariant userdebug
 
   functions -c fish_prompt _old_hcp5_fish_prompt
   function fish_prompt
     set -l bg 333
     set -l standout 0f0
-    
+
     set_color $standout --background $bg
-    echo -n "HCP5 "
+    echo -n "HCP5 $Hcp5Version "
     set_color $fish_color_normal --background $bg
-    echo -n Target=
+    echo -n "Target="
     set_color $standout --background $bg
     echo -n "$Target "
     set_color $fish_color_normal --background $bg
-    echo -n Debug=
+    echo -n "Debug="
     set_color $standout --background $bg
     echo -n "$Debug "
     set_color $fish_color_normal --background $bg
-    echo -n ParallelBuild=
+    echo -n "ParallelBuild="
     set_color $standout --background $bg
     echo -n "$ParallelBuild "
     set_color $fish_color_normal --background $bg
-    echo -n BuildVariant=
+    echo -n "BuildVariant="
     set_color $standout --background $bg
-    echo $BuildVariant
+    echo "$BuildVariant"
 
     _old_hcp5_fish_prompt
   end
